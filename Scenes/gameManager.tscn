@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cs5gd8r34mqam"]
+
+[ext_resource type="Script" uid="uid://cv3rgt3u3vbxu" path="res://Scripts/GameManager.cs" id="1_sfebq"]
+[ext_resource type="AudioStream" uid="uid://8h28t8vsdo7e" path="res://Assets/Sounds/good.mp3" id="2_voqug"]
+[ext_resource type="AudioStream" uid="uid://dyvnvx2h436pj" path="res://Assets/Sounds/bad.mp3" id="3_2crpj"]
+[ext_resource type="AudioStream" uid="uid://c451vwvhrlww4" path="res://Assets/Sounds/music.mp3" id="4_p60qp"]
+
+[node name="GameManager" type="Node2D" unique_id=897965862]
+script = ExtResource("1_sfebq")
+_soundGood = ExtResource("2_voqug")
+_soundBad = ExtResource("3_2crpj")
+_music = ExtResource("4_p60qp")

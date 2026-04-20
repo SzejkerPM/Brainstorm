@@ -1,0 +1,36 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+.nomedia
+
+# Godot-specific ignores
+.import/
+export.cfg
+export_credentials.cfg
+*.tmp
+
+# Imported translations (automatically generated from CSV files)
+*.translation
+
+# Mono-specific ignores
+.mono/
+data_*/
+mono_crash.*.json
+
+# C# / Visual Studio / MSBuild ignores
+bin/
+obj/
+*.sln
+*.csproj
+
+# Rider / IntelliJ specific
+.idea/
+
+# Visual Studio / Local user settings
+*.user
+*.userosscache
+*.sln.docattachments
+
+# Layouts and results
+*.suo
+*.userprefs

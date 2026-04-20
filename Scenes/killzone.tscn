@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dfsrlw62j46g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rli2t"]
+
+[node name="Killzone" type="Area2D" unique_id=2069153396 groups=["Killzone"]]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1517209167]
+shape = SubResource("RectangleShape2D_rli2t")

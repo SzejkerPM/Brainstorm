@@ -1,0 +1,235 @@
+[gd_scene format=3 uid="uid://bag47y6tohhwc"]
+
+[ext_resource type="Script" uid="uid://ctkrh75cfw8vv" path="res://Scripts/GameUi.cs" id="1_jfom5"]
+[ext_resource type="Texture2D" uid="uid://dt6k15c8k0o8f" path="res://Assets/Sprites/Good.png" id="1_xeuva"]
+[ext_resource type="Texture2D" uid="uid://bf1eltn3c7sec" path="res://Assets/Sprites/FullHP.png" id="2_hxhds"]
+[ext_resource type="Texture2D" uid="uid://chg68idfuvq2h" path="res://Assets/Sprites/NoHP.png" id="2_kb72y"]
+[ext_resource type="FontFile" uid="uid://bgk8hrpj4lb2r" path="res://Assets/Fonts/ARCADECLASSIC.TTF" id="4_036hs"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xeuva"]
+line_spacing = 0.0
+font = ExtResource("4_036hs")
+font_size = 48
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fkq1y"]
+font = ExtResource("4_036hs")
+font_size = 100
+font_color = Color(0.7882353, 0.16078432, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_w8poo"]
+font = ExtResource("4_036hs")
+font_size = 55
+font_color = Color(1, 0.9411765, 0.4627451, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_t2edd"]
+font = ExtResource("4_036hs")
+font_size = 55
+
+[sub_resource type="LabelSettings" id="LabelSettings_036hs"]
+font = ExtResource("4_036hs")
+font_size = 99
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=902971613 node_paths=PackedStringArray("_gameHudPlayerPoints", "_health", "_gameHud", "_gameOverScreen", "_mainMenuScreen", "_gameOverPlayerPoints", "_gameOverPlayerHighPoints", "_mainMenuPlayerHighPoints")]
+script = ExtResource("1_jfom5")
+_gameHudPlayerPoints = NodePath("C_GameHUD/MarginPoints/Points/Label")
+_health = [NodePath("C_GameHUD/MarginHealth/Hearts/TextureRect"), NodePath("C_GameHUD/MarginHealth/Hearts/TextureRect2"), NodePath("C_GameHUD/MarginHealth/Hearts/TextureRect3")]
+_spriteLostHealth = ExtResource("2_kb72y")
+_gameHud = NodePath("C_GameHUD")
+_gameOverScreen = NodePath("CR_GameOverScreen")
+_mainMenuScreen = NodePath("CR_MainMenu")
+_gameOverPlayerPoints = NodePath("CR_GameOverScreen/CenterContainer/VBoxContainer/L_Points")
+_gameOverPlayerHighPoints = NodePath("CR_GameOverScreen/CenterContainer/VBoxContainer/L_HScore")
+_mainMenuPlayerHighPoints = NodePath("CR_MainMenu/CenterContainer/VBoxContainer/L_HScore")
+
+[node name="C_GameHUD" type="Control" parent="." unique_id=82652231]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginPoints" type="MarginContainer" parent="C_GameHUD" unique_id=1587745575]
+layout_mode = 1
+offset_top = -2.0
+offset_right = 261.0
+offset_bottom = 96.0
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="Points" type="HBoxContainer" parent="C_GameHUD/MarginPoints" unique_id=1181922664]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 2
+
+[node name="TextureRect" type="TextureRect" parent="C_GameHUD/MarginPoints/Points" unique_id=1240510264]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 15
+size_flags_vertical = 13
+texture = ExtResource("1_xeuva")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="C_GameHUD/MarginPoints/Points" unique_id=268223063]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_xeuva")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginHealth" type="MarginContainer" parent="C_GameHUD" unique_id=636885493]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -144.0
+offset_bottom = 80.0
+grow_horizontal = 0
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="Hearts" type="HBoxContainer" parent="C_GameHUD/MarginHealth" unique_id=1865860407]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 2
+
+[node name="TextureRect" type="TextureRect" parent="C_GameHUD/MarginHealth/Hearts" unique_id=16977397]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("2_hxhds")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="C_GameHUD/MarginHealth/Hearts" unique_id=303158228]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("2_hxhds")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="C_GameHUD/MarginHealth/Hearts" unique_id=241633432]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("2_hxhds")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CR_GameOverScreen" type="ColorRect" parent="." unique_id=1485270862]
+process_mode = 3
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.59607846)
+
+[node name="CenterContainer" type="CenterContainer" parent="CR_GameOverScreen" unique_id=1412649947]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CR_GameOverScreen/CenterContainer" unique_id=140936378]
+layout_mode = 2
+
+[node name="L_GameOver" type="Label" parent="CR_GameOverScreen/CenterContainer/VBoxContainer" unique_id=313103867]
+layout_mode = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_fkq1y")
+horizontal_alignment = 1
+
+[node name="L_HScore" type="Label" parent="CR_GameOverScreen/CenterContainer/VBoxContainer" unique_id=529402802]
+layout_mode = 2
+text = "High Score: n/a"
+label_settings = SubResource("LabelSettings_w8poo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="C_Spacer2" type="Control" parent="CR_GameOverScreen/CenterContainer/VBoxContainer" unique_id=935439280]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="L_Points" type="Label" parent="CR_GameOverScreen/CenterContainer/VBoxContainer" unique_id=115100024]
+layout_mode = 2
+text = "Score: n/a"
+label_settings = SubResource("LabelSettings_t2edd")
+horizontal_alignment = 1
+
+[node name="C_Spacer" type="Control" parent="CR_GameOverScreen/CenterContainer/VBoxContainer" unique_id=1612694955]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="B_Restart" type="Button" parent="CR_GameOverScreen/CenterContainer/VBoxContainer" unique_id=515827200]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.7372549, 0.8745098, 1)
+theme_override_fonts/font = ExtResource("4_036hs")
+theme_override_font_sizes/font_size = 55
+text = "Restart"
+
+[node name="B_Exit" type="Button" parent="CR_GameOverScreen/CenterContainer/VBoxContainer" unique_id=941756900]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.7372549, 0.8745098, 1)
+theme_override_fonts/font = ExtResource("4_036hs")
+theme_override_font_sizes/font_size = 55
+text = "Exit"
+
+[node name="CR_MainMenu" type="ColorRect" parent="." unique_id=585133060]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.59607846)
+
+[node name="CenterContainer" type="CenterContainer" parent="CR_MainMenu" unique_id=726125027]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CR_MainMenu/CenterContainer" unique_id=84953891]
+layout_mode = 2
+
+[node name="L_GameName" type="Label" parent="CR_MainMenu/CenterContainer/VBoxContainer" unique_id=2072132940]
+layout_mode = 2
+text = "BRAINSTORM"
+label_settings = SubResource("LabelSettings_036hs")
+
+[node name="L_HScore" type="Label" parent="CR_MainMenu/CenterContainer/VBoxContainer" unique_id=523704587]
+layout_mode = 2
+text = "High Score: n/a"
+label_settings = SubResource("LabelSettings_w8poo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="C_Spacer" type="Control" parent="CR_MainMenu/CenterContainer/VBoxContainer" unique_id=1937606850]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="CR_MainMenu/CenterContainer/VBoxContainer" unique_id=645583236]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.7372549, 0.8745098, 1)
+theme_override_fonts/font = ExtResource("4_036hs")
+theme_override_font_sizes/font_size = 55
+text = "PLAY"
+
+[connection signal="pressed" from="CR_GameOverScreen/CenterContainer/VBoxContainer/B_Restart" to="." method="OnRestartButtonPressed"]
+[connection signal="pressed" from="CR_GameOverScreen/CenterContainer/VBoxContainer/B_Exit" to="." method="OnExitButtonPressed"]
+[connection signal="pressed" from="CR_MainMenu/CenterContainer/VBoxContainer/Button" to="." method="OnPlayButtonPressed"]

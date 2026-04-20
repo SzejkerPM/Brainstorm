@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://ce7l6ivfr1628"]
+
+[ext_resource type="Script" uid="uid://bjwjn0w5647vu" path="res://Scripts/Spawner.cs" id="1_iyp0c"]
+[ext_resource type="PackedScene" uid="uid://cowiyu6ylakyl" path="res://Scenes/good.tscn" id="2_o73hm"]
+[ext_resource type="PackedScene" uid="uid://d4doubhg8vhxh" path="res://Scenes/bad.tscn" id="3_tc8xl"]
+
+[node name="MasterSpawner" type="Node2D" unique_id=611782444]
+script = ExtResource("1_iyp0c")
+_goodScene = ExtResource("2_o73hm")
+_badScene = ExtResource("3_tc8xl")
+_goodMinSpawnTime = 2.0
+_badMinSpawnTime = 0.25
+_goodDecreaseSpawnTime = 0.0
+
+[node name="GoodTimer" type="Timer" parent="." unique_id=1751607412]
+wait_time = 2.0
+autostart = true
+
+[node name="BadTimer" type="Timer" parent="." unique_id=2057421025]
+autostart = true

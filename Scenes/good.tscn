@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cowiyu6ylakyl"]
+
+[ext_resource type="Script" uid="uid://cwcdyxtkx0gjh" path="res://Scripts/FallingObject.cs" id="1_77xuh"]
+[ext_resource type="Texture2D" uid="uid://dt6k15c8k0o8f" path="res://Assets/Sprites/Good.png" id="1_opngy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_77xuh"]
+radius = 7.0
+
+[node name="Good" type="Area2D" unique_id=890512945 groups=["Good"]]
+collision_layer = 2
+collision_mask = 8
+script = ExtResource("1_77xuh")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1966196331]
+texture = ExtResource("1_opngy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=795243389]
+shape = SubResource("CircleShape2D_77xuh")

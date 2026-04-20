@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://3q0u5o1h1kjc"]
+
+[ext_resource type="PackedScene" uid="uid://et8hbh66yy36" path="res://Scenes/player.tscn" id="1_ebmjs"]
+[ext_resource type="PackedScene" uid="uid://bag47y6tohhwc" path="res://Scenes/gameUI.tscn" id="1_i6g32"]
+[ext_resource type="Texture2D" uid="uid://14a58g5rjice" path="res://Assets/Sprites/Dirt.png" id="2_wrm1d"]
+[ext_resource type="Texture2D" uid="uid://2mj02alhqbp1" path="res://Assets/Sprites/DirtNoGrass.png" id="3_3dryh"]
+[ext_resource type="PackedScene" uid="uid://ce7l6ivfr1628" path="res://Scenes/masterSpawner.tscn" id="4_wowpa"]
+[ext_resource type="PackedScene" uid="uid://dfsrlw62j46g" path="res://Scenes/killzone.tscn" id="7_1l0tm"]
+[ext_resource type="PackedScene" uid="uid://cs5gd8r34mqam" path="res://Scenes/gameManager.tscn" id="7_v158k"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wowpa"]
+texture = ExtResource("2_wrm1d")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i6g32"]
+texture = ExtResource("3_3dryh")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_1l0tm"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_wowpa")
+sources/1 = SubResource("TileSetAtlasSource_i6g32")
+
+[node name="Game" type="Node2D" unique_id=2049365642]
+
+[node name="GameManager" parent="." unique_id=897965862 node_paths=PackedStringArray("_ui", "_player") instance=ExtResource("7_v158k")]
+_ui = NodePath("../CanvasLayer")
+_player = NodePath("../Player")
+
+[node name="CanvasLayer" parent="." unique_id=902971613 instance=ExtResource("1_i6g32")]
+
+[node name="Player" parent="." unique_id=1931004826 instance=ExtResource("1_ebmjs")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=841833468]
+process_mode = 3
+offset = Vector2(0, -65)
+zoom = Vector2(4, 4)
+
+[node name="TileMap" type="TileMap" parent="." unique_id=1011699839]
+tile_set = SubResource("TileSet_1l0tm")
+format = 2
+layer_0/tile_data = PackedInt32Array(7, 0, 0, 6, 0, 0, 5, 0, 0, 4, 0, 0, 3, 0, 0, 2, 0, 0, 1, 0, 0, 0, 0, 0, 65535, 0, 0, 65534, 0, 0, 65533, 0, 0, 65532, 0, 0, 65530, 0, 0, 65529, 0, 0, 65528, 0, 0, 65527, 1, 0, -9, 0, 0, 8, 1, 0, -65528, 0, 0, 65531, 0, 0)
+
+[node name="MasterSpawner" parent="." unique_id=611782444 instance=ExtResource("4_wowpa")]
+position = Vector2(0, -167)
+
+[node name="Killzone" parent="." unique_id=2069153396 instance=ExtResource("7_1l0tm")]
+position = Vector2(1, 12)
+scale = Vector2(14.960004, 1)
+
+[connection signal="HealthChanged" from="Player" to="CanvasLayer" method="OnHealthChanged"]
+[connection signal="PointsChanged" from="Player" to="CanvasLayer" method="OnPointsChanged"]

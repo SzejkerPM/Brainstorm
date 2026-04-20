@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://et8hbh66yy36"]
+
+[ext_resource type="Script" uid="uid://wjpjar455aei" path="res://Scripts/Player.cs" id="1_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://i2dp026jgibx" path="res://Assets/Sprites/Brain.png" id="1_v0iea"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
+size = Vector2(16, 12)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cvnsp"]
+radius = 6.0
+
+[sub_resource type="Gradient" id="Gradient_cvnsp"]
+offsets = PackedFloat32Array(0.51361865, 1)
+colors = PackedColorArray(1, 1, 0, 1, 1, 0.84705883, 0, 0)
+
+[node name="Player" type="CharacterBody2D" unique_id=1931004826 node_paths=PackedStringArray("_spritePlayer", "_pointCollectParticles")]
+script = ExtResource("1_cvnsp")
+_spritePlayer = NodePath("Sprite2D")
+_pointCollectParticles = NodePath("PointParticle")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2058091841]
+texture_filter = 1
+position = Vector2(1, -8)
+texture = ExtResource("1_v0iea")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=143995152]
+position = Vector2(1, -6)
+shape = SubResource("RectangleShape2D_cvnsp")
+
+[node name="HitboxArea2D" type="Area2D" parent="." unique_id=783557815]
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea2D" unique_id=620548910]
+position = Vector2(1, -6)
+shape = SubResource("CircleShape2D_cvnsp")
+
+[node name="PointParticle" type="CPUParticles2D" parent="." unique_id=1075488692]
+position = Vector2(1, -6)
+emitting = false
+amount = 100
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+draw_order = 1
+emission_shape = 1
+emission_sphere_radius = 10.7
+spread = 180.0
+gravity = Vector2(0, 10)
+initial_velocity_min = 10.0
+initial_velocity_max = 50.0
+angular_velocity_min = 346.78
+angular_velocity_max = 350.98
+angle_max = 180.0
+scale_amount_min = 0.05
+scale_amount_max = 0.5
+color = Color(1, 0.7921569, 0.18431373, 1)
+color_ramp = SubResource("Gradient_cvnsp")
+
+[connection signal="area_entered" from="HitboxArea2D" to="." method="OnAreaEntered"]
